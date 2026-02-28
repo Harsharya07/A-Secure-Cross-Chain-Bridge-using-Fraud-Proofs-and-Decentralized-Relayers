@@ -1,103 +1,79 @@
-🔐 A Secure Cross-Chain Bridge using Fraud Proofs & Decentralized Relayers
+🔐 **A Secure Cross-Chain Bridge using Fraud Proofs & Decentralized Relayers**
 
 A hardened cross-chain bridge prototype built using Hardhat that demonstrates:
 
-Secure asset locking on Source Chain (Chain A)
+1. Secure asset locking on Source Chain (Chain A)
 
-Token minting on Destination Chain (Chain B)
+2. Token minting on Destination Chain (Chain B)
 
-Fraud detection mechanism
+3. Fraud detection mechanism
 
-Decentralized relayer simulation
+4. Decentralized relayer simulation
 
-Fraud watcher protection
+5. Fraud watcher protection
 
 This project simulates two local blockchains and demonstrates both:
 
-✅ Normal Cross-Chain Transfer
+1. ✅ Normal Cross-Chain Transfer
 
-❌ Fraud Attempt Detection
+2. ❌ Fraud Attempt Detection
 
-🛠 Tech Stack
+🛠 Tech Stack: 
 
-Hardhat
+1. Hardhat
 
-Solidity
+2. Solidity
 
-Node.js
+3. Node.js
 
-Ethers.js
+4. Ethers.js
 
 Local Hardhat Networks (Dual Chain Setup)
 
 📦 Installation
-1️⃣ Clone the Repository
-git clone https://github.com/Harsharya07/A-Secure-Cross-Chain-Bridge-using-Fraud-Proofs-and-Decentralized-Relayers.git
-cd A-Secure-Cross-Chain-Bridge-using-Fraud-Proofs-and-Decentralized-Relayers
+1️⃣ Clone the Repository : git clone https://github.com/Harsharya07/A-Secure-Cross-Chain-Bridge-using-Fraud-Proofs-and-Decentralized-Relayers.git
 
-2️⃣ Install Dependencies
-npm install
+ cd A-Secure-Cross-Chain-Bridge-using-Fraud-Proofs-and-Decentralized-Relayers
 
-🚀 How to Run the Project
+2️⃣ Install Dependencies : npm install
 
+🚀 How to Run the Project : 
 You need 4 separate terminals open.
 
 🖥 Terminal 1 – Compile & Start Chain A
-Compile Smart Contracts
-npx hardhat compile
+Compile Smart Contracts :  npx hardhat compile
 
-Start Source Chain (Chain A)
-npx hardhat node --port 8545
+Start Source Chain (Chain A) : npx hardhat node --port 8545
 
 🖥 Terminal 2 – Start Chain B
-Start Destination Chain
-npx hardhat node --port 9545
+Start Destination Chain : npx hardhat node --port 9545
 
 🖥 Terminal 3 – Deploy Contracts & Start Relayer
-Deploy to Chain A
-npx hardhat run scripts/1_deploy_ChainA.js --network chainA
-
-Deploy to Chain B
-npx hardhat run scripts/2_deploy_ChainB.js --network chainB
-
-Start the Relayer Bot
-node scripts/3_relayer.js
-
-
+Deploy to Chain A : npx hardhat run scripts/1_deploy_ChainA.js --network chainA
+Deploy to Chain B : npx hardhat run scripts/2_deploy_ChainB.js --network chainB
+Start the Relayer Bot :  node scripts/3_relayer.js
 The relayer listens for lock events on Chain A and submits proofs to Chain B.
 
 🖥 Terminal 4 – Run the Demos (Main Actions)
 ✅ Demo 1: Normal Transfer (Lock → Mint)
 
-Simulates a legitimate cross-chain transfer.
-
-node scripts/4_demo_user_lock.js
-
-
-Expected Flow:
-
-Tokens locked on Chain A
-
-Relayer detects event
-
-Tokens minted on Chain B
+Simulates a legitimate cross-chain transfer : node scripts/4_demo_user_lock.js
+Expected Flow: 
+1. Tokens locked on Chain A
+2. Relayer detects event
+3. Tokens minted on Chain B
 
 ❌ Demo 2: Fraud Attempt
 
-Simulates a malicious relayer or fake proof attempt.
-
-node scripts/5_demo_fraud_watcher.js
-
+Simulates a malicious relayer or fake proof attempt : node scripts/5_demo_fraud_watcher.js
 
 Expected Flow:
+1. Fraud proof submitted
+2. Fraud watcher detects inconsistency
+3. Malicious action rejected
 
-Fraud proof submitted
+📂 Project Structure :
 
-Fraud watcher detects inconsistency
-
-Malicious action rejected
-
-📂 Project Structure
 contracts/
 scripts/
   ├── 1_deploy_ChainA.js
@@ -107,50 +83,36 @@ scripts/
   ├── 5_demo_fraud_watcher.js
 hardhat.config.js
 
-🔐 Security Features
+🔐 Security Features : 
 
-Event-based cross-chain communication
+1. Event-based cross-chain communication
+2. Fraud-proof validation logic
+3. Relayer simulation
+4. Fraud watcher protection layer
+5. Dual independent blockchain simulation
 
-Fraud-proof validation logic
+🧠 How It Works : 
 
-Relayer simulation
+1. User locks tokens on Chain A.
+2. Event is emitted.
+3. Relayer listens and submits proof to Chain B.
+4. Chain B verifies proof.
+5. Tokens are minted.
+6. If fraud detected → transaction reverted.
 
-Fraud watcher protection layer
+🛑 Important Notes : 
 
-Dual independent blockchain simulation
-
-🧠 How It Works
-
-User locks tokens on Chain A.
-
-Event is emitted.
-
-Relayer listens and submits proof to Chain B.
-
-Chain B verifies proof.
-
-Tokens are minted.
-
-If fraud detected → transaction reverted.
-
-🛑 Important Notes
-
-Always start both chains before deployment.
-
-Relayer must be running before executing demos.
-
-Use separate terminals for each process.
-
-Make sure ports 8545 and 9545 are free.
+1. Always start both chains before deployment.
+2. Relayer must be running before executing demos.
+3. Use separate terminals for each process.
+4. Make sure ports 8545 and 9545 are free.
 
 🎯 Educational Purpose
 
 This project demonstrates how hardened cross-chain bridges can defend against:
 
-Fake proofs
+1. Fake proofs
+2. Malicious relayers
+3. Replay attacks
+4. Event tampering
 
-Malicious relayers
-
-Replay attacks
-
-Event tampering
